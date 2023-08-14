@@ -15,6 +15,8 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+        @wireUiScripts
+
 
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
         @livewireStyles
@@ -25,6 +27,18 @@
     </head>
 
     <body>
+        <x-notifications />
+
         @yield('body')
+
+        <script>
+            window.addEventListener('redirection', event => {
+                console.log(event);
+                setTimeout(() => {
+                    window.location.href = event.detail.route;
+                    }, 2000); 
+            })
+            </script>
+
     </body>
 </html>
